@@ -63,12 +63,37 @@ The server starts at `http://localhost:8000`. Open **http://localhost:8000/docs*
 ```json
 {
   "question": "What programming languages does this person know?",
-  "answer": "Python, JavaScript, and SQL.",
+  "answer": "Python, Java, C, C++, SQL, JavaScript",
   "sources": [
-    { "content": "...relevant chunk of text from the PDF...", "page": 1 }
+    { "content": "...relevant chunk of text from the PDF...", "page": 0 }
   ]
 }
 ```
+
+## Demo
+
+Here's a real example from testing this bot against a resume PDF:
+
+**Request:**
+```json
+{ "question": "What is this person's CGPA?" }
+```
+
+**Response:**
+```json
+{
+  "question": "What is this person's CGPA?",
+  "answer": "9.12",
+  "sources": [
+    {
+      "content": "...Achieved a 9.12 CGPA over 67 credits across three semesters, including a top SGPA of 9.50...",
+      "page": 0
+    }
+  ]
+}
+```
+
+The model correctly pulled the answer from the retrieved context rather than guessing — a good sign the retrieval step is actually grounding the generation, not just padding the prompt.
 
 ## Endpoints
 
