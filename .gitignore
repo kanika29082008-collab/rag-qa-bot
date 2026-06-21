@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Generated vector store (regenerate with ingest.py)
+vector_store/
+
+# Environment variables
+.env
